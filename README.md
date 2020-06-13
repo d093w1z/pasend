@@ -24,6 +24,7 @@ make
 # On Android:
 
 Download and install PulseDroid app from this repository:
-[PulseDroid.apk](https://github.com/dront78/PulseDroid/tree/master/bin)
+- [PulseDroid.apk](https://github.com/dront78/PulseDroid/tree/master/bin)
+- [SimpleProtocolPlayer](https://play.google.com/store/apps/details?id=com.kaytat.simpleprotocolplayer&hl=en)(lower latency)
 
 Input the Local IP address of your Pc and put 8000 (default) as port number
