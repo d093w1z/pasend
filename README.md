@@ -26,4 +26,4 @@ make
 Download and install PulseDroid app from this repository:
 [PulseDroid.apk](https://github.com/dront78/PulseDroid/tree/master/bin)
 
-Input the Local IP address of your Pc and put 8000 (default) as porn number
+Input the Local IP address of your Pc and put 8000 (default) as port number
