@@ -18,8 +18,7 @@ int main(int argc, char const *argv[])
         printf("Usage: %s start|stop\n",argv[0]);
         exit(0);
     }
-    // restore_vol();
-    // exit(0);
+
     if (strcmp(argv[1],"start") == 0)
     {
         start();
@@ -72,14 +71,10 @@ int restore_vol()
     char sr_vol = fgetc(fp);
     char sn_vol = fgetc(fp);
     printf("%d:%d\n", sr_vol,sn_vol);
-    // sprintf(srce,"pactl set-soruce-volume 0 %d%%",sr_vol);
-    // sprintf(sink,"pactl set-sink-volume 0 %d%%",sn_vol);
     sprintf(reset,"pactl set-source-volume 0 %d%%;pactl set-sink-volume 0 %d%%;",sr_vol,sn_vol);
-    // printf("%s\n",reset);
-    // cout<<sink<<sn_vol<<"%";
-    // system(srce);
     system(reset);
     fclose(fp);
+    system("rm .pa_data")
     return 0;
 }
 
