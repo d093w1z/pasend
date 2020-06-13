@@ -74,7 +74,7 @@ int restore_vol()
     sprintf(reset,"pactl set-source-volume 0 %d%%;pactl set-sink-volume 0 %d%%;",sr_vol,sn_vol);
     system(reset);
     fclose(fp);
-    system("rm .pa_data")
+    system("rm .pa_data");
     return 0;
 }
 
