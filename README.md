@@ -25,7 +25,7 @@ make
 
 # On Android:
 
-Download and install PulseDroid app from this repository:
+Download and install any app from the following (any one):
 - [PulseDroid.apk](https://github.com/dront78/PulseDroid/tree/master/bin)
 - [SimpleProtocolPlayer](https://play.google.com/store/apps/details?id=com.kaytat.simpleprotocolplayer&hl=en)(lower latency)
 
