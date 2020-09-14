@@ -38,8 +38,8 @@ int main(int argc, char const *argv[])
 void start()
 {
     char load[] = "pactl load-module module-simple-protocol-tcp rate=48000 format=s16le channels=2 source=alsa_output.pci-0000_00_1b.0.analog-stereo.monitor record=true  port=8000";
-    char sink[] = "pactl set-sink-volume 0 1%";
-    char srce[] = "pactl set-source-volume 0 125%";
+    char sink[] = "pactl set-sink-volume 	$(pactl list sinks   short|awk -F ' ' '{print $1}') 1%";
+    char srce[] = "pactl set-source-volume 	$(pactl list sources short|awk -F ' ' '{print $1}') 150%";
     store_vol();
     system(load);
     system(sink);
@@ -70,8 +70,8 @@ int restore_vol()
     }
     char sr_vol = fgetc(fp);
     char sn_vol = fgetc(fp);
-    printf("%d:%d\n", sr_vol,sn_vol);
-    sprintf(reset,"pactl set-source-volume 0 %d%%;pactl set-sink-volume 0 %d%%;",sr_vol,sn_vol);
+    // printf("%d:%d\n", sr_vol,sn_vol);
+    sprintf(reset,"pactl set-source-volume $(pactl list sources short|awk -F ' ' '{print $1}') %d%%;pactl set-sink-volume $(pactl list sinks short|awk -F ' ' '{print $1}') %d%%;",sr_vol,sn_vol);
     system(reset);
     fclose(fp);
     system("rm .pa_data");
@@ -98,11 +98,11 @@ int get_vol(char *cmd)
 int store_vol()
 {
     FILE *fp;
-    char cmd1[] = "pactl list sinks | grep '^[[:space:]]Volume:' |     head -n $(( 0 + 1 )) | tail -n 1 | sed -e 's/.* \\([0-9][0-9]*\\)%.*/\\1/'";
-    char cmd2[] = "pactl list sources | grep '^[[:space:]]Volume:' |     head -n $(( 0 + 1 )) | tail -n 1 | sed -e 's/.* \\([0-9][0-9]*\\)%.*/\\1/'";
+    char cmd1[] = "pactl list sinks   | grep '^[[:space:]]Volume:' | head -n $(( 0 + 1 )) | tail -n 1 | sed -e 's/.* \\([0-9][0-9]*\\)%.*/\\1/'";
+    char cmd2[] = "pactl list sources | grep '^[[:space:]]Volume:' | head -n $(( 0 + 1 )) | tail -n 1 | sed -e 's/.* \\([0-9][0-9]*\\)%.*/\\1/'";
     int sn_vol = get_vol(cmd1);
     int sr_vol = get_vol(cmd2);
-    printf("%d:%d\n", sr_vol, sn_vol);
+    // printf("%d:%d\n", sr_vol, sn_vol);
     fp = fopen(".pa_data","wb");
     if(fp == NULL)
     {
