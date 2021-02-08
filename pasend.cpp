@@ -39,7 +39,7 @@ void start()
 {
     char load[] = "pactl load-module module-simple-protocol-tcp rate=48000 format=s16le channels=2 source=alsa_output.pci-0000_00_1b.0.analog-stereo.monitor record=true  port=8000";
     char sink[] = "pactl set-sink-volume 	$(pactl list sinks   short|awk -F ' ' '{print $1}') 1%";
-    char srce[] = "pactl set-source-volume 	$(pactl list sources short|awk -F ' ' '{print $1}') 150%";
+    char srce[] = "pactl set-source-volume 	$(pactl list sources short|awk -F ' ' '{print $1}') 120%";
     store_vol();
     system(load);
     system(sink);

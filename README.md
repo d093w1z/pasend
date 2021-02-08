@@ -14,7 +14,7 @@ pulseaudio (pactl)
 
 ### Installation :
 
-# On Pc:
+#### On Pc:
 
 ```
 git clone https://github.com/DopeWiz/pasend.git
@@ -23,7 +23,7 @@ make
 ./pasend start|stop
 ```
 
-# On Android:
+#### On Android:
 
 Download and install any app from the following (any one):
 - [PulseDroid.apk](https://github.com/dront78/PulseDroid/tree/master/bin)
